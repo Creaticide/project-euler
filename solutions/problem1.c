@@ -1,6 +1,11 @@
 #include <stdio.h>
 
-int main() {
+/*
+ * Objective: "Find the sum of all the multiples of 3 or 5 below 1000"
+ */
+
+void problem_1()
+{
 	int sum = 0;
 
 	for (int i = 1; i < 1000; i++) {
@@ -8,7 +13,5 @@ int main() {
 			sum += i;
 	}
 
-	printf("Sum: %d", sum);
-
-	return 0;
+	printf("Problem 1: %d\n", sum);
 }
