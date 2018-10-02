@@ -50,3 +50,10 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+.autotools
+.cproject
+.project
+.settings/
+Build (GNU)/
+
