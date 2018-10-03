@@ -20,7 +20,10 @@ void composite_prime_factors(int **primes, int n);
 
 void problem_5()
 {
-	// Calculates least common multiple between numbers from 1 to N.
+	/*
+	 * Calculates least common multiple between numbers from 1 to N.
+	 * (Excuse the mess...)
+	 */
 	printf("%I64d\n", calculate_lcm_1_to_n(20));
 }
 
