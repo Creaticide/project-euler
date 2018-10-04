@@ -52,7 +52,7 @@ long long calculate_lcm_1_to_n(int n)
 
 	for (int i = 0; i < n; i++) {
 		if (numbers[i].is_prime) {
-				lcm *= power(numbers[i].n, numbers[i].power);
+			lcm *= power(numbers[i].n, numbers[i].power);
 		}
 	}
 	free(numbers);
@@ -99,7 +99,6 @@ int is_prime(int n)
 
 	return 1;
 }
-
 
 /*
  * Made my own implementation of pow() because of some data type weirdness.
