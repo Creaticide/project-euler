@@ -14,54 +14,53 @@
  * Now let's C.
  */
 
+typedef struct number {
+	int n, is_prime, power;
+} Number;
+
 int is_prime(int n);
 long long calculate_lcm_1_to_n(int n);
-void composite_prime_factors(int **primes, int n);
+void composite_prime_factors(Number *numbers, int n);
+long long power(int n, int exp);
 
 void problem_5()
 {
-	/*
-	 * Calculates least common multiple between numbers from 1 to N.
-	 * (Excuse the mess...)
-	 */
-	printf("%I64d\n", calculate_lcm_1_to_n(20));
+	printf("Problem 5: %I64d\n", calculate_lcm_1_to_n(20));
 }
 
+/*
+ * Calculates least common multiple between numbers from 1 to N.
+ * (Excuse the mess...)
+ */
 long long calculate_lcm_1_to_n(int n)
 {
 	long long lcm = 1;
-	int **primes = malloc((n + 1) * sizeof(int));
+	Number *numbers;
+	numbers = malloc((n) * sizeof(Number));
 
-	for (int i = 1; i < (n + 1); i++) {
-		primes[i] = malloc(2 * sizeof(int));
-		primes[i][0] = 0;
-		primes[i][1] = 0;
+	for (int i = 0; i < n; i++) {
+		numbers[i].n = i + 1;
+		numbers[i].is_prime = is_prime(i + 1);
+		numbers[i].power = 1;
 	}
 
-	for (int i = 1; i <= n; i++) {
-		if (is_prime(i)) {
-			primes[i][0] = i;
-		} else {
-			composite_prime_factors(primes, i);
+	for (int i = 0; i < n; i++) {
+		if (! numbers[i].is_prime) {
+			composite_prime_factors(numbers, numbers[i].n);
 		}
 	}
 
-	for (int i = 1; i < n; i++) {
-		if (primes[i][0] > 0) {
-			if (primes[i][1] > 1) {
-				lcm *= (long long) pow((double) i, (double) primes[i][1]);
-			} else {
-				lcm *= i;
-			}
-			free(primes[i]);
+	for (int i = 0; i < n; i++) {
+		if (numbers[i].is_prime) {
+				lcm *= power(numbers[i].n, numbers[i].power);
 		}
 	}
-	free(primes);
+	free(numbers);
 
 	return lcm;
 }
 
-void composite_prime_factors(int **primes, int n)
+void composite_prime_factors(Number *numbers, int n)
 {
 	int count = 0;
 
@@ -69,8 +68,8 @@ void composite_prime_factors(int **primes, int n)
 		n /= 2;
 		count++;
 	}
-	if (count > primes[2][1]) {
-		primes[2][1] = count;
+	if (count > numbers[1].power) {
+		numbers[1].power = count;
 	}
 
 	for (int i = 3; i <= sqrt(n); i += 2) {
@@ -79,8 +78,8 @@ void composite_prime_factors(int **primes, int n)
 			n /= i;
 			count++;
 		}
-		if (count > primes[i][1]) {
-			primes[i][1] = count;
+		if (count > numbers[i - 1].power) {
+			numbers[i - 1].power = count;
 		}
 		count = 0;
 	}
@@ -99,4 +98,20 @@ int is_prime(int n)
 	}
 
 	return 1;
+}
+
+
+/*
+ * Made my own implementation of pow() because of some data type weirdness.
+ */
+long long power(int n, int exp)
+{
+	long long result = n;
+
+	while (exp > 1) {
+		result *= n;
+		exp--;
+	}
+
+	return result;
 }
