@@ -18,10 +18,10 @@ typedef struct number {
 	int n, is_prime, power;
 } Number;
 
-int is_prime(int n);
-long long calculate_lcm_1_to_n(int n);
-void composite_prime_factors(Number *numbers, int n);
-long long power(int n, int exp);
+static int is_prime(int n);
+static long long calculate_lcm_1_to_n(int n);
+static void composite_prime_factors(Number *numbers, int n);
+static long long power(int n, int exp);
 
 void problem_5()
 {
@@ -32,7 +32,7 @@ void problem_5()
  * Calculates least common multiple between numbers from 1 to N.
  * (Excuse the mess...)
  */
-long long calculate_lcm_1_to_n(int n)
+static long long calculate_lcm_1_to_n(int n)
 {
 	long long lcm = 1;
 	Number *numbers;
@@ -60,7 +60,7 @@ long long calculate_lcm_1_to_n(int n)
 	return lcm;
 }
 
-void composite_prime_factors(Number *numbers, int n)
+static void composite_prime_factors(Number *numbers, int n)
 {
 	int count = 0;
 
@@ -85,7 +85,7 @@ void composite_prime_factors(Number *numbers, int n)
 	}
 }
 
-int is_prime(int n)
+static int is_prime(int n)
 {
 	if (n < 2) {
 		return 0;
@@ -103,7 +103,7 @@ int is_prime(int n)
 /*
  * Made my own implementation of pow() because of some data type weirdness.
  */
-long long power(int n, int exp)
+static long long power(int n, int exp)
 {
 	long long result = n;
 

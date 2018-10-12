@@ -5,14 +5,14 @@
  * Objective: "What is the largest prime factor of the number 600851475143 ?"
  */
 
-int max_prime_factor(long long n);
+static int max_prime_factor(long long n);
 
 void problem_3()
 {
 	printf("Problem 3: %d\n", max_prime_factor(600851475143));
 }
 
-int max_prime_factor(long long n)
+static int max_prime_factor(long long n)
 {
 	int max = 0;
 

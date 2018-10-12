@@ -5,7 +5,7 @@
  * Objective: "Find the largest palindrome made from the product of two 3-digit numbers."
  */
 
-int is_palindrome(int n);
+static int is_palindrome(int n);
 
 void problem_4()
 {
@@ -23,7 +23,7 @@ void problem_4()
 	printf("Problem 4: %d\n", max);
 }
 
-int is_palindrome(int n)
+static int is_palindrome(int n)
 {
 	char str[6];
 	int len;
