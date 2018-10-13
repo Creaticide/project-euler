@@ -8,5 +8,6 @@ void problem_4();
 void problem_5();
 void problem_6();
 void problem_7();
+void problem_8();
 
 #endif /* SOLUTIONS_PROBLEMS_H_ */

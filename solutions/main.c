@@ -9,7 +9,7 @@ int main()
 	clock_t begin, end;
 
 	begin = clock();
-	problem_7();
+	problem_8();
 	end = clock();
 	execution_time(begin, end);
 
